@@ -21,7 +21,7 @@ class RantsController < ApplicationController
 
   def update
     @rant = Rant.find(params[:id])
-    if @rant.update(post_params)
+    if @rant.update(rant_params)
       head :no_content
     else
       render json: @rant.errors, status: :unprocessable_entity
