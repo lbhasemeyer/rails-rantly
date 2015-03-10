@@ -1,8 +1,13 @@
 class RantsController < ApplicationController
 
   def index
-    @rants = Rant.all
-    render json: @rants
+    if params[:find].present?
+      @filtered = Rant.where("title like ? OR body like ?", "%#{ params[:find] }%", "%#{ params[:find] }%")
+      render json: @filtered
+    else
+      @rants = Rant.all
+      render json: @rants
+    end
   end
 
   def show
