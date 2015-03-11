@@ -1,9 +1,17 @@
 Rant.delete_all
 User.delete_all
 
-user1 = User.create!( first_name: "Countess Periwinkle", last_name: "McGhee", email: "countess@email.com", password_digest: "1234" )
-user2 = User.create!( first_name: "Couch-Lamp", last_name: "Smith", email: "couchlamp@email.com", password_digest: "1234" )
-user3 = User.create!( first_name: "Heiress", last_name: "Fairy Brick", email: "heiress@email.com", password_digest: "1234" )
+user1 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::Internet.password )
+user2 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::Internet.password )
+user3 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::Internet.password )
+user4 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::Internet.password )
+user5 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::Internet.password )
+user6 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::Internet.password )
+user7 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::Internet.password )
+user8 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::Internet.password )
+user9 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::Internet.password )
+user10 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: Faker::Internet.password )
+
 
 rant1 = Rant.create!(
 title: "Danger",

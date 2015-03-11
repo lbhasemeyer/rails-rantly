@@ -43,7 +43,7 @@ class RantsController < ApplicationController
   private
 
   def rant_params
-    params.require(:rant).permit(:title, :body)
+    params.require(:rant).permit(:title, :body, :user_id)
   end
 
 end
