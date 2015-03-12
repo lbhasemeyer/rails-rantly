@@ -1,5 +1,7 @@
 class RantsController < ApplicationController
 
+  skip_before_action :require_login, only: [:index]
+
   def index
     if params[:find].present?
       @filtered = Rant.where("title like ? OR body like ?", "%#{ params[:find] }%", "%#{ params[:find] }%")
