@@ -1,6 +1,6 @@
 class RantsController < ApplicationController
 
-  skip_before_action :require_login, only: [:index]
+  # skip_before_action :require_login, only: [:index]
 
   def index
     if params[:find].present?
