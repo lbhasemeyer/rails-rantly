@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_login
+  skip_before_action :require_login, only: [:create]
 
   def index
     @users = User.all
@@ -9,6 +9,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    render json: @user
+  end
+
+  def create
+    @user = User.new(user_params)
+    @user.save
+    session[:user_id] = @user.id
+    session[:authToken] = generate_auth_token(@user.id)
     render json: @user
   end
 
@@ -28,11 +36,16 @@ class UsersController < ApplicationController
     head :no_content
   end
 
+  def generate_auth_token(user)
+    payload = { user_id: user }
+    JWT.encode(payload, 'secret')
+  end
+
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :password_digest)
   end
 
 end
