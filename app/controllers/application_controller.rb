@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
 
-  # before_action :require_login
+  before_action :require_login
 
   def current_user
-    User.find_by(id: session[:user_id])
+    if request.headers['Authorization']
+      decoded_auth_token = JWT.decode(request.headers['Authorization'].split(' ').last, nil, false)
+      User.find_by(id: decoded_auth_token[0]["user_id"])
+    end
   end
 
   helper_method :current_user
@@ -13,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless current_user
-      redirect_to signin_path
+      render json: { error: "Sorry, you can't come in." }, status: :unauthorized
     end
   end
 
