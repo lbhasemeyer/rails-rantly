@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email].downcase)
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      render json: { login: { success: true, token: generate_auth_token(user.id) } }
+      render json: { signin: { success: true, token: generate_auth_token(user.id) } }
     else
-      { login: { success: false, error: "Invalid Username/Password" } }
+      { signin: { success: false, error: "Invalid Username/Password" } }
     end
   end
 
