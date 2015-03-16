@@ -7,8 +7,7 @@ class RantsController < ApplicationController
       @filtered = Rant.where("title like ? OR body like ?", "%#{ params[:find] }%", "%#{ params[:find] }%")
       render json: @filtered
     else
-      @rants = Rant.all
-      render json: @rants
+      render json: Rant.all.order(created_at: :desc)
     end
   end
 
@@ -45,7 +44,7 @@ class RantsController < ApplicationController
   private
 
   def rant_params
-    params.require(:rant).permit(:title, :body, :user_id)
+    params.require(:rant).permit(:title, :body, :created_at, :user_id)
   end
 
 end

@@ -3,12 +3,13 @@ class SessionsController < ApplicationController
   skip_before_action :require_login
 
   def create
-    user = User.find_by_email(params[:email].downcase)
-    if user && user.authenticate(params[:password])
+    user = User.find_by_email(params[:session][:email])
+    if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
-      render json: { signin: { success: true, token: generate_auth_token(user.id) } }
+      session[:authToken] = generate_auth_token(user.id)
+      render json: { session: { success: true, token: session[:authToken] } }
     else
-      { signin: { success: false, error: "Invalid Username/Password" } }
+      render json: { session: { success: false, error: "Invalid Username/Password" } }
     end
   end
 

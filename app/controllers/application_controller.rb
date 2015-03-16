@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     if request.headers['Authorization']
-      decoded_auth_token = JWT.decode(request.headers['Authorization'].split(' ').last, nil, false)
+      decoded_auth_token = JWT.decode(request.headers['Authorization'], nil, false)
       User.find_by(id: decoded_auth_token[0]["user_id"])
     end
   end
