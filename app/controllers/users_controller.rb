@@ -15,14 +15,14 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.save
-    session[:user_id] = @user.id
-    session[:authToken] = generate_auth_token(@user.id)
-    render json: @user
+    # session[:user_id] = @user.id
+    # session[:authToken] = generate_auth_token(@user.id)
+    # render json: { session: { success: true, token: session[:authToken] } }
   end
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if @user.update(params.require(:user).permit(:first_name, :last_name, :email))
       redirect_to users_path
       head :no_content
     else
