@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  skip_before_action :require_login, only: [:create]
+  skip_before_action :require_login, only: [:create, :new, :index]
 
   def index
     @users = User.all
@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+byebug
     @user.save
     # session[:user_id] = @user.id
     # session[:authToken] = generate_auth_token(@user.id)
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password_digest)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
 end
