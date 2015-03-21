@@ -14,11 +14,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-byebug
+
     @user.save
-    # session[:user_id] = @user.id
-    # session[:authToken] = generate_auth_token(@user.id)
-    # render json: { session: { success: true, token: session[:authToken] } }
+    session[:user_id] = @user.id
+    session[:authToken] = generate_auth_token(@user.id)
+    render json: { session: { success: true, token: session[:authToken] } }
   end
 
   def update
