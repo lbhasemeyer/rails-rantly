@@ -17,11 +17,14 @@ class RantsController < ApplicationController
   end
 
   def create
-    @rant = Rant.new(rant_params)
-    if @rant.save
-      render json: @rant, status: :created, location: @rant
-    else
-      render json: @rant.errors, status: :unprocessable_entity
+    if current_user
+      @rant = Rant.new(rant_params)
+      @rant.user_id = current_user.id
+      if @rant.save
+        render json: @rant, status: :created, location: @rant
+      else
+        render json: @rant.errors, status: :unprocessable_entity
+      end
     end
   end
 
