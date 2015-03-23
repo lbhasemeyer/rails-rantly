@@ -14,11 +14,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
-    @user.save
-    session[:user_id] = @user.id
-    session[:authToken] = generate_auth_token(@user.id)
-    render json: { session: { success: true, token: session[:authToken] } }
+    if @user.save
+      session[:user_id] = @user.id
+      session[:authToken] = generate_auth_token(@user.id)
+      render json: { session: { success: true, token: session[:authToken] } }
+    else
+      render json: { session: { success: false, error: "Please try again" } }
+    end
   end
 
   def update
