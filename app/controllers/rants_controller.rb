@@ -7,7 +7,7 @@ class RantsController < ApplicationController
       @filtered = Rant.where("title like ? OR body like ?", "%#{ params[:find] }%", "%#{ params[:find] }%")
       render json: @filtered
     else
-      render json: Rant.all.order(created_at: :desc)
+      render json: Rant.all
     end
   end
 
