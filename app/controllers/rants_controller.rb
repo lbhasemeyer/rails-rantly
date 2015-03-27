@@ -30,7 +30,7 @@ class RantsController < ApplicationController
 
   def update
     @rant = Rant.find(params[:id])
-    if current_user.id == rant.user_id
+    if current_user.id.to_s == @rant.user_id
       if @rant.update(rant_params)
         head :no_content
       else
@@ -43,7 +43,7 @@ class RantsController < ApplicationController
 
   def destroy
     @rant = Rant.find(params[:id])
-    if current_user.id == rant.user_id
+    if current_user.id.to_s == @rant.user_id
       @rant.destroy
       head :no_content
     else
