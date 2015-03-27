@@ -4,7 +4,7 @@ class RantsController < ApplicationController
 
   def index
     if params[:find].present?
-      @filtered = Rant.where("title like ? OR body like ?", "%#{ params[:find] }%", "%#{ params[:find] }%")
+      @filtered = Rant.where("lower(title) like ? OR lower(body) like ?", "%#{ params[:find].downcase }%", "%#{ params[:find].downcase }%")
       render json: @filtered
     else
       render json: Rant.all
