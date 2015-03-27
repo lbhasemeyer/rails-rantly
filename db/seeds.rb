@@ -15,18 +15,18 @@ user10 = User.create!( first_name: Faker::Name.first_name, last_name: Faker::Nam
 
 rant1 = Rant.create!(
 title: "Danger",
-body: "The following animals kill more people yearly than sharks: mosquitos, hippos, deer, bees, dogs, ants, jellyfish, cows, horses, spiders, and rattlesnakes.",
+body: "The following animals kill more people yearly than sharks: mosquitos, hippos, deer, bees, dogs, ants, jellyfish, cows, horses, spiders, and rattlesnakes.The following animals kill more people yearly than sharks: mosquitos, hippos, deer, bees, dogs, ants, jellyfish, cows, horses, spiders, and rattlesnakes.The following animals kill more people yearly than sharks: mosquitos, hippos, deer, bees, dogs, ants, jellyfish, cows, horses, spiders, and rattlesnakes.",
 user: user1
 )
 
 rant2 = Rant.create!(
 title: "Small Kangaroo",
-body: "A sloth was robbed by a turtle.  When asked to describe the event, he could only reply 'I don't know...it all happened so fast...'",
+body: "A sloth was robbed by a turtle.  When asked to describe the event, he could only reply 'I don't know...it all happened so fast...'A sloth was robbed by a turtle.  When asked to describe the event, he could only reply 'I don't know...it all happened so fast...'A sloth was robbed by a turtle.  When asked to describe the event, he could only reply 'I don't know...it all happened so fast...'A sloth was robbed by a turtle.  When asked to describe the event, he could only reply 'I don't know...it all happened so fast...'",
 user: user2
 )
 
 rant3 = Rant.create!(
 title: "Haiku",
-body: "A growling attack, Darting eyes see Chipotle, She must be hungry.",
+body: "A growling attack, Darting eyes see Chipotle, She must be hungry.A growling attack, Darting eyes see Chipotle, She must be hungry.A growling attack, Darting eyes see Chipotle, She must be hungry.A growling attack, Darting eyes see Chipotle, She must be hungry.A growling attack, Darting eyes see Chipotle, She must be hungry.A growling attack, Darting eyes see Chipotle, She must be hungry.A growling attack, Darting eyes see Chipotle, She must be hungry.A growling attack, Darting eyes see Chipotle, She must be hungry.A growling attack, Darting eyes see Chipotle, She must be hungry.",
 user: user1
 )

@@ -30,8 +30,12 @@ class RantsController < ApplicationController
 
   def update
     @rant = Rant.find(params[:id])
-    if @rant.update(rant_params)
-      head :no_content
+    if current_user.id == rant.user_id
+      if @rant.update(rant_params)
+        head :no_content
+      else
+        render json: @rant.errors, status: :unprocessable_entity
+      end
     else
       render json: @rant.errors, status: :unprocessable_entity
     end
@@ -39,8 +43,12 @@ class RantsController < ApplicationController
 
   def destroy
     @rant = Rant.find(params[:id])
-    @rant.destroy
-    head :no_content
+    if current_user.id == rant.user_id
+      @rant.destroy
+      head :no_content
+    else
+      render json: @rant.errors, status: :unprocessable_entity
+    end
   end
 
 
